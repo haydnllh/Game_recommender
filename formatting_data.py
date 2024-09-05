@@ -14,8 +14,7 @@ def get_data_frame():
     df.user_id = user_encoder.fit_transform(df.user_id)
     df.game_id = games_encoder.fit_transform(df.game_id)
 
-    alpha = 61.0 #The 55% quartile will be 0.5
-    df.playtime = df.playtime.apply(lambda x: 1 - (1 / (1 + (x / alpha))))
+    df.playtime = df.playtime.apply(normalise)
 
     game_df = df[['game_id', 'game_name']].copy()
     game_df = game_df.drop_duplicates(subset=['game_id'])
@@ -29,3 +28,7 @@ def get_data_frame():
     game_df = game_df.reset_index(drop=True)
 
     return df, game_df
+
+#The 55% quartile will be 0.5
+def normalise(x, alpha=61):
+    return 1 - (1 / (1 + (x / alpha)))
