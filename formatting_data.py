@@ -1,8 +1,8 @@
 import pandas as pd
 from sklearn.preprocessing import LabelEncoder
 
-def get_data_frame():
-    df = pd.read_csv("data\processed\processed_users_items.csv")
+def get_data_frame(rows):
+    df = pd.read_csv("data\processed\processed_users_items.csv")[:rows]
 
     df = df.drop(columns=['index','playtime_2weeks'])
 
@@ -13,8 +13,6 @@ def get_data_frame():
 
     df.user_id = user_encoder.fit_transform(df.user_id)
     df.game_id = games_encoder.fit_transform(df.game_id)
-
-    df.playtime = df.playtime.apply(normalise)
 
     game_df = df[['game_id', 'game_name']].copy()
     game_df = game_df.drop_duplicates(subset=['game_id'])
