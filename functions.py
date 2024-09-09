@@ -1,16 +1,5 @@
 import matplotlib.pyplot as plt
-import numpy as np
 import textwrap
-
-def cost(y, pred, R, chunk_size=500):
-    cost = 0
-    for i in range(0, y.shape[0], chunk_size):
-        cost += np.sum(
-                np.square(
-                np.subtract(y[i:i+chunk_size], pred[i:i+chunk_size] * R[i:i+chunk_size])
-            )
-        )
-    return cost/2
 
 def draw_x_gametimes(df):
     fig, ax = plt.subplots(figsize=(20, 10))
