@@ -6,8 +6,7 @@ def draw_x_gametimes(*args):
     for ax, df in zip(axs, args):
         ax.bar([textwrap.fill(game, 10) for game in df.iloc[:, 1]], df.iloc[:, 2])
         ax.set_xlabel('Game')
-        ax.set_ylabel('Playtime(log2)')
-        ax.set_yscale('log', base=2)
+        ax.set_ylabel('Playtime\n(hours)')
         ax.tick_params(axis='x', labelsize=9)
     plt.show()
 
