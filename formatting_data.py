@@ -26,7 +26,3 @@ def get_data_frame(rows):
     game_df = game_df.reset_index(drop=True)
 
     return df, game_df
-
-#The 55% quartile will be 0.5
-def normalise(x, alpha=61):
-    return 1 - (1 / (1 + (x / alpha)))
