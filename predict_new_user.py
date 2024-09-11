@@ -47,8 +47,5 @@ def predict(I, x, iterations=500, lambda_=0.01, alpha=0.00000001):
         dj_dtheta += lambda_ * dj_dtheta
         dj_dtheta *= alpha
         theta += dj_dtheta
-        
+
     return theta
-
-
-predict_new_user()
